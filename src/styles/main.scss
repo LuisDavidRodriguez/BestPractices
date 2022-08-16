@@ -1,0 +1,154 @@
+@import '2_base/config';
+
+$item-height: 45px;
+$font-family: 'Roboto', arial, helvetica, sans-serif;
+
+body {
+  font-family: $font-family;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  width: 500px;
+  min-height: 400px;
+  max-height: 800px;
+  box-shadow: 3px 3px 5px 5px black;
+  display: flex;
+  flex-direction: column;
+
+  #{&}__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: $item-height;
+    padding: 0 5px;
+    border-bottom: 1px solid lightgrey;
+
+    & input {
+      border: none;
+      width: 80%;
+      height: 80%;
+      padding: 5px;
+      font-style: italic;
+    }
+
+    & i {
+      text-align: center;
+      width: 20px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  #{&}__footer {
+    height: $item-height + 10;
+    display: flex;
+    margin-top: auto;
+
+    & .delete-button {
+      justify-content: center;
+      width: 100%;
+      border: none;
+      height: $item-height+10px;
+      background-color: rgb(236, 236, 236);
+      color: gray;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.items-container {
+  width: 100%;
+  overflow-y: scroll;
+  position: relative;
+
+  #{&}__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 5px;
+    height: $item-height;
+    border-bottom: 1px solid lightgrey;
+    transition: all 0.5s linear;
+
+    &.invisible {
+      transition: all 1s linear;
+      transform: translateX(-500px);
+    }
+
+    &:active {
+      background-color: rgba(255, 208, 0, 0.712);
+      border: 2px solid;
+    }
+
+    &.editor {
+      background-color: blanchedalmond;
+    }
+
+    & .number {
+      width: 10%;
+    }
+
+    & .description {
+      width: 50%;
+      border: none;
+      background-color: transparent;
+      padding: 0 3px;
+
+      &:enabled {
+        color: black;
+        border: 1px solid gray;
+      }
+
+      &:disabled {
+        color: black;
+      }
+    }
+
+    & i {
+      text-align: center;
+      width: 20px;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &.hold {
+        transition: all 2s linear;
+        transform: scale(1.5);
+      }
+    }
+
+    & [type='checkbox'] {
+      width: 15px;
+      height: 15px;
+    }
+
+    & .btn-cancel {
+      background-color: transparent;
+      border: none;
+      text-decoration: underline;
+      font-size: 0.6em;
+      color: red;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  & .line-trhough {
+    text-decoration: line-through;
+  }
+}
